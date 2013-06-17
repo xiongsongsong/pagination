@@ -43,9 +43,7 @@ KISSY.add('gallery/pagination', function(S, Base, EVENT, NODE, DOM){
 		}
 	};
 
-	S.extend(Pagination, S.Base);
-
-	S.augment(Pagination, S.Event.Target, {
+	S.extend(Pagination, S.Base, {
 		init: function() {
 			this.render();
 		},

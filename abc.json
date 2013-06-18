@@ -1,13 +1,10 @@
 {
     "name": "pagination",
     "version": "1.0",
-    "desc": "请修改组件描述",
+    "desc": "分页组件，可配置页码展现形式和数量，监听页码切换",
     "cover": "",
     "author": {
-        "name": "aloysious.ld",
-        "email": "aloysious.ld@taobao.com",
-        "page": "请修改作者个人首页"
+        "name": "首作",
+        "email": "aloysiousliang@gmail.com"
     },
-    "type": "kissy-pie",
-    "type-url": "http://abc.alibaba-inc.com/r/kissy-pie"
 }

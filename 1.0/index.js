@@ -46,7 +46,7 @@ KISSY.add('gallery/pagination/1.0/index', function(S, Base, EVENT, NODE, DOM){
 		},
 		// 当前页的最大紧邻后置页数
 		postposePagesCount: {
-			value: 2
+			value: 1
 		},
 		// 第一个"..."前显示的页数
 		firstPagesCount: {
@@ -54,7 +54,7 @@ KISSY.add('gallery/pagination/1.0/index', function(S, Base, EVENT, NODE, DOM){
 		},
 		// 第二个"..."后显示的页数
 		lastPagesCount: {
-			value: 1
+			value: 0
 		},
 		render: {
 			value: true
@@ -106,7 +106,7 @@ KISSY.add('gallery/pagination/1.0/index', function(S, Base, EVENT, NODE, DOM){
 				offset;
 
 			// currPage前的页码展示
-			paginationInner += currPage === 1 ? '<span>上一页</span>' : '<a class="pagination-prev">上一页</a>';
+			paginationInner += currPage === 1 ? '<span class="pagination-start"><span>上一页</span></span>' : '<a class="pagination-prev"><span>上一页</span></a>';
 
 			if (currPage <= firstPagesCount + preposePagesCount + 1) {
 				for(var i=1; i<currPage; i++) {
@@ -117,7 +117,7 @@ KISSY.add('gallery/pagination/1.0/index', function(S, Base, EVENT, NODE, DOM){
 				for(var i=1; i<=firstPagesCount; i++) {
 					paginationInner += this._renderActivePage(i);
 				}
-				paginationInner += '<span>...</span>';
+				paginationInner += '<span class="pagination-break">...</span>';
 				for(var i=currPage-preposePagesCount; i<=currPage-1; i++) {
 					paginationInner += this._renderActivePage(i);
 				}
@@ -137,13 +137,13 @@ KISSY.add('gallery/pagination/1.0/index', function(S, Base, EVENT, NODE, DOM){
 				for(var i=currPage+1; i<=currPage+postposePagesCount; i++) {
 					paginationInner += this._renderActivePage(i);
 				}
-				paginationInner += '<span>...</span>';
+				paginationInner += '<span class="pagination-break">...</span>';
 				for(var i=totalPage-lastPagesCount+1; i<=totalPage; i++) {
 					paginationInner += this._renderActivePage(i);
 				}
 			}
 
-			paginationInner += currPage === totalPage ? '<span>下一页</span>' : '<a class="pagination-next">下一页</a>';
+			paginationInner += currPage === totalPage ? '<span class="pagination-end"><span>下一页</span></span>' : '<a class="pagination-next"><span>下一页<span></a>';
 
 			DOM.html(this.con, paginationInner);
 
@@ -154,7 +154,7 @@ KISSY.add('gallery/pagination/1.0/index', function(S, Base, EVENT, NODE, DOM){
 	     *
 	     */
 		_renderActivePage: function(index) {
-			return '<a class="pagination-spec" data-page="' + index + '">' + index + '</a>';	
+			return '<a class="pagination-spec" data-page="' + index + '">' + index + '</a>';
 		},
 		_switchToPage: function(page) {
 			this.set('currentPage', page);

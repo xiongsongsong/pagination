@@ -34,11 +34,11 @@ KISSY.add('gallery/pagination/1.0/index', function(S, Base, EVENT, NODE, DOM){
 	Pagination.ATTRS = {
 		// 总页数
 		totalPage: {
-			value: 10    // 必须大于0
+			value: 10
 		},
 		// 默认选中的页数
 		currentPage: {
-			value: 1     // 必须大于0,且小于等于totalPage
+			value: 1
 		},
 		// 当前页的最大紧邻前置页数（不包括最前面的显示页数）
 		preposePagesCount: {
@@ -92,17 +92,18 @@ KISSY.add('gallery/pagination/1.0/index', function(S, Base, EVENT, NODE, DOM){
 				self._switchToPage(toPage);
 			});
 		},
+		syncUI: function() {},
 		/**
 		 * @brief 刷新分页组件
 		 */
 		_resetPagination: function() {
 			var paginationInner = '',
-				currPage = this.get('currentPage'),
-				totalPage = this.get('totalPage'),
-				preposePagesCount = this.get('preposePagesCount'),
-				postposePagesCount = this.get('postposePagesCount'),
-				firstPagesCount = this.get('firstPagesCount'),
-				lastPagesCount = this.get('lastPagesCount'),
+				totalPage = this.get('totalPage') > 0 ? this.get('totalPage') : 1,
+				currPage = (this.get('currentPage') <= totalPage && this.get('currentPage')) > 0 ? this.get('currentPage') : 1,
+				preposePagesCount = this.get('preposePagesCount') >= 0 ? this.get('preposePagesCount') : 2,
+				postposePagesCount = this.get('postposePagesCount') >= 0 ? this.get('postposePagesCount') : 1,
+				firstPagesCount = this.get('firstPagesCount') >= 0 ? this.get('firstPagesCount') : 2,
+				lastPagesCount = this.get('lastPagesCount') >= 0 ? this.get('lastPagesCount') : 0,
 				offset;
 
 			// currPage前的页码展示
@@ -163,7 +164,12 @@ KISSY.add('gallery/pagination/1.0/index', function(S, Base, EVENT, NODE, DOM){
 				toPage: this.get('currentPage')
 			});
 		},
-		syncUI: function() {}
+		show: function() {
+			this.con.show();
+		},
+		hide: function() {
+			this.con.hide();
+		}
 	});
 
 	return Pagination;

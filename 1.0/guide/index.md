@@ -40,3 +40,6 @@
 * `render()`，渲染组件
 * `show()`，显示组件
 * `hide()`，隐藏组件
+
+## Demo
+Demo访问地址：[http://gallery.kissyui.com/pagination/1.0/demo/index.html](http://gallery.kissyui.com/pagination/1.0/demo/index.html)

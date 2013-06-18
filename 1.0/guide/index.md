@@ -21,4 +21,4 @@
     });
 
 ## 配置参数
-
+![demo](http://img01.taobaocdn.com/tps/i1/T15JllFcVaXXaykczU-422-64.png)
